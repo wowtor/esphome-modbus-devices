@@ -1,0 +1,93 @@
+substitutions:
+  hostname: omnia-adapter
+  friendly_name: Omnia Adapter
+
+modbus_controller:
+  - id: omnia
+    address: 1
+    setup_priority: -10
+    update_interval: 20s
+#  - id: flair
+#    address: 20
+#    setup_priority: -10
+#  - id: kookplaat_modbus
+#    address: 42
+#    setup_priority: -10
+#  - id: wasmachine_modbus
+#    address: 43
+#    setup_priority: -10
+  - id: omnia_meter_modbus
+    address: 47
+    setup_priority: -10
+  - id: pv_meter_modbus
+    address: 48
+    setup_priority: -10
+
+packages:
+  remote_packages:
+    url: https://github.com/wowtor/esphome-modbus-devices
+    ref: main
+    refresh: 0s
+    files:
+      - common/ethernet.yaml,
+      #- common/wifi-configured.yaml,
+      #- common/wifi-unconfigured.yaml,
+      #- path: ferroli-omnia/entities.yaml
+      #  vars:
+      #    controller_id: omnia
+      #    friendly_prefix: Omnia
+      #- path: modbus/ws100_kwh_meter.yaml
+      #  vars:
+      #    prefix: omnia_meter
+      #    friendly_prefix: Omnia Meter
+      #- path: modbus/flair400.yaml
+      #  vars:
+      #    prefix: flair
+      #    friendly_prefix: Ventilation
+      #- path: modbus/sdm120.yaml
+      #    vars:
+      #      prefix: kookplaat
+      #      friendly_prefix: Kookplaat
+      #- path: modbus/ws100_kwh_meter.yaml
+      #  vars:
+      #    prefix: pv_meter
+      #    friendly_prefix: PV Meter
+
+esphome:
+  name: $hostname
+  #name_add_mac_suffix: true
+
+esp32:
+  board: esp-wrover-kit
+  framework:
+    type: arduino
+
+uart:
+  tx_pin: 14
+  rx_pin: 15
+  baud_rate: 9600
+  stop_bits: 1
+  parity: NONE
+
+modbus:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: ""
+
+ota:
+  password: ""
+  platform: esphome
+
+text_sensor:
+  - platform: version
+    hide_timestamp: true
+    name: "${friendly_name} ESPHome Version"
+    entity_category: diagnostic
+
+preferences:
+  # set write interval to maximum (stored as milliseconds in 32bit unsigned int)
+  flash_write_interval: 4294967295 ms
