@@ -2,26 +2,12 @@ substitutions:
   hostname: omnia-adapter
   friendly_name: Omnia Adapter
 
+# Configure the modbus controller with one or more modbus devices
 modbus_controller:
   - id: omnia
     address: 1
     setup_priority: -10
     update_interval: 20s
-#  - id: flair
-#    address: 20
-#    setup_priority: -10
-#  - id: kookplaat_modbus
-#    address: 42
-#    setup_priority: -10
-#  - id: wasmachine_modbus
-#    address: 43
-#    setup_priority: -10
-  - id: omnia_meter_modbus
-    address: 47
-    setup_priority: -10
-  - id: pv_meter_modbus
-    address: 48
-    setup_priority: -10
 
 packages:
   remote_packages:
@@ -29,29 +15,29 @@ packages:
     ref: main
     refresh: 0s
     files:
-      - common/ethernet.yaml,
+      #- common/ethernet.yaml
       #- common/wifi-configured.yaml,
       #- common/wifi-unconfigured.yaml,
       #- path: ferroli-omnia/entities.yaml
       #  vars:
-      #    controller_id: omnia
-      #    friendly_prefix: Omnia
+      #    device_id: omnia
+      #    prefix: Omnia
       #- path: modbus/ws100_kwh_meter.yaml
       #  vars:
-      #    prefix: omnia_meter
-      #    friendly_prefix: Omnia Meter
+      #    device_id: omnia_meter
+      #    prefix: Omnia Meter
       #- path: modbus/flair400.yaml
       #  vars:
-      #    prefix: flair
-      #    friendly_prefix: Ventilation
+      #    device_id: flair
+      #    prefix: Ventilation
       #- path: modbus/sdm120.yaml
       #    vars:
-      #      prefix: kookplaat
-      #      friendly_prefix: Kookplaat
+      #      device_id: kookplaat
+      #      prefix: Kookplaat
       #- path: modbus/ws100_kwh_meter.yaml
       #  vars:
-      #    prefix: pv_meter
-      #    friendly_prefix: PV Meter
+      #    device_id: pv_meter
+      #    prefix: PV Meter
 
 esphome:
   name: $hostname

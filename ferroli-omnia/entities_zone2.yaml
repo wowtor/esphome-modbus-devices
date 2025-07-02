@@ -4,8 +4,8 @@ sensor:
   # Register address 111(PLC: 40112) Tw2
   # Zone 2 water flow temperature , unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} system water outlet temperature zone2"
+    modbus_controller_id: "${device_id}"
+    name: "${prefix} system water outlet temperature zone2"
     register_type: holding
     address: 111
     device_class: TEMPERATURE
@@ -18,8 +18,8 @@ sensor:
   # Register address 137(PLC: 40138) Climate curve T1S calculated value 2
   # The corresponding calculated T1S of zone 2
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} curve calculated setpoint zone2"
+    modbus_controller_id: "${device_id}"
+    name: "${prefix} curve calculated setpoint zone2"
     register_type: holding
     address: 137
     entity_category: DIAGNOSTIC
@@ -39,8 +39,8 @@ switch:
   # BIT10 ECO mode
   # bit6-7: see sensor: silent state
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} curve mode zone2"
+    modbus_controller_id: "${device_id}"
+    name: "${prefix} curve mode zone2"
     icon: "mdi:snowflake-thermometer"
     register_type: holding
     address: 5
@@ -58,8 +58,8 @@ number:
   #   T1S high temp setting range is 35~65°C.
   # Note: high/low range setting depends on emission system (floor/radiators)
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} preset setpoint zone2"
+    modbus_controller_id: "${device_id}"
+    name: "${prefix} preset setpoint zone2"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
