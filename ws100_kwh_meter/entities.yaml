@@ -1,8 +1,8 @@
 sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} voltage"
-    id: "${prefix}_voltage"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} voltage"
+    id: "${controller_id}_voltage"
     register_type: read
     address: 0x100
     value_type: S_DWORD
@@ -13,9 +13,9 @@ sensor:
       - multiply: .001
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} current"
-    id: "${prefix}_current"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} current"
+    id: "${controller_id}_current"
     register_type: read
     address: 0x102
     value_type: S_DWORD
@@ -24,18 +24,18 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} power"
-    id: "${prefix}_power"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} power"
+    id: "${controller_id}_power"
     register_type: read
     address: 0x104
     value_type: S_DWORD
     device_class: POWER
     unit_of_measurement: W
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} apparent power"
-    id: "${prefix}_apparent_power"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} apparent power"
+    id: "${controller_id}_apparent_power"
     register_type: read
     address: 0x106
     value_type: S_DWORD
@@ -44,9 +44,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} frequency"
-    id: "${prefix}_frequency"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} frequency"
+    id: "${controller_id}_frequency"
     register_type: read
     address: 0x10a
     value_type: U_WORD
@@ -58,9 +58,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} power factor"
-    id: "${prefix}_power_factor"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} power factor"
+    id: "${controller_id}_power_factor"
     register_type: read
     address: 0x10b
     value_type: S_WORD
@@ -72,9 +72,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} forward energy"
-    id: "${prefix}_forward_energy"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} forward energy"
+    id: "${controller_id}_forward_energy"
     register_type: read
     address: 0x10e
     value_type: U_DWORD
@@ -85,9 +85,9 @@ sensor:
       - multiply: .01
     state_class: total_increasing
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} reverse energy"
-    id: "${prefix}_reverse_energy"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reverse energy"
+    id: "${controller_id}_reverse_energy"
     register_type: read
     address: 0x118
     value_type: U_DWORD
@@ -98,9 +98,9 @@ sensor:
       - multiply: .01
     state_class: total_increasing
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} energy"
-    id: "${prefix}_energy"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} energy"
+    id: "${controller_id}_energy"
     register_type: read
     address: 0x122
     value_type: S_DWORD
@@ -111,9 +111,9 @@ sensor:
       - multiply: .01
     state_class: total
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} forward demand"
-    id: "${prefix}_forward_demand"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} forward demand"
+    id: "${controller_id}_forward_demand"
     register_type: read
     address: 0x176
     value_type: S_DWORD
@@ -125,9 +125,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} forward maximum demand"
-    id: "${prefix}_forward_max_demand"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} forward maximum demand"
+    id: "${controller_id}_forward_max_demand"
     register_type: read
     address: 0x178
     value_type: S_DWORD
@@ -139,9 +139,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} reverse demand"
-    id: "${prefix}_reverse_demand"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reverse demand"
+    id: "${controller_id}_reverse_demand"
     register_type: read
     address: 0x17a
     value_type: S_DWORD
@@ -153,9 +153,9 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} reverse maximum demand"
-    id: "${prefix}_reverse_max_demand"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reverse maximum demand"
+    id: "${controller_id}_reverse_max_demand"
     register_type: read
     address: 0x17c
     value_type: S_DWORD
@@ -168,9 +168,9 @@ sensor:
     disabled_by_default: true
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} modbus slave id"
-    id: "${prefix}_modbus_slave_id"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} modbus slave id"
+    id: "${controller_id}_slave_id"
     register_type: read
     address: 0x1003
     value_type: U_WORD
@@ -178,9 +178,9 @@ sensor:
     skip_updates: 720
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} firmware version"
-    id: "${prefix}_firmware"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} firmware version"
+    id: "${controller_id}_firmware"
     register_type: read
     address: 0x1004
     value_type: U_WORD
@@ -188,9 +188,9 @@ sensor:
     skip_updates: 720
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} hardware version"
-    id: "${prefix}_hardware"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} hardware version"
+    id: "${controller_id}_hardware"
     register_type: read
     address: 0x1005
     value_type: U_WORD
@@ -200,9 +200,9 @@ sensor:
 
 text_sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} serial number"
-    id: "${prefix}_serial_no"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} serial number"
+    id: "${controller_id}_serial_no"
     register_type: read
     address: 0x1000
     register_count: 6
@@ -214,22 +214,22 @@ text_sensor:
 
 #button:
 #  - platform: template
-#    name: "${friendly_prefix} reset counters"
-#    id: "${prefix}_reset_counters"
+#    name: "${prefix} reset counters"
+#    id: "${controller_id}_reset_counters"
 #    entity_category: CONFIG
 #    on_press:
 #      then:
 #        - lambda: |-
-#            modbus_controller::ModbusController *controller = id(${prefix}_modbus);
+#            modbus_controller::ModbusController *controller = id(${controller_id});
 #            modbus_controller::ModbusCommandItem resetfilter = modbus_controller::ModbusCommandItem::create_write_single_command(controller, 0x2002, 0x3000);
 #            controller->queue_command(resetfilter);
 #  - platform: template
-#    name: "${friendly_prefix} reset max demand"
-#    id: "${prefix}_reset_max_demand"
+#    name: "${prefix} reset max demand"
+#    id: "${controller_id}_reset_max_demand"
 #    entity_category: CONFIG
 #    on_press:
 #      then:
 #        - lambda: |-
-#            modbus_controller::ModbusController *controller = id(${prefix}_modbus);
+#            modbus_controller::ModbusController *controller = id(${controller_id});
 #            modbus_controller::ModbusCommandItem resetfilter = modbus_controller::ModbusCommandItem::create_write_single_command(controller, 0x2003, 0xf);
 #            controller->queue_command(resetfilter);

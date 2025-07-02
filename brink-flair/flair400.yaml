@@ -1,8 +1,12 @@
+# Required variables:
+#   controller_id: the modbus controller id
+#   prefix: the prefix to use for all entity ids
+
 binary_sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} filter warning"
-    id: "${prefix}_filter_warning"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} filter warning"
+    id: "${controller_id}_filter_warning"
     register_type: read
     address: 4100
     entity_category: DIAGNOSTIC
@@ -10,8 +14,8 @@ binary_sensor:
 
 sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} inlet pressure"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} inlet pressure"
     register_type: read
     address: 4023
     value_type: S_WORD
@@ -23,8 +27,8 @@ sensor:
     entity_category: DIAGNOSTIC
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} exhaust pressure"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} exhaust pressure"
     register_type: read
     address: 4024
     value_type: S_WORD
@@ -36,8 +40,8 @@ sensor:
     entity_category: DIAGNOSTIC
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} inlet flow"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} inlet flow"
     register_type: read
     address: 4032
     value_type: U_WORD
@@ -46,8 +50,8 @@ sensor:
     icon: "mdi:weather-windy"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} inlet fan"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} inlet fan"
     register_type: read
     address: 4034
     value_type: U_WORD
@@ -56,8 +60,8 @@ sensor:
     icon: "mdi:wind-power"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} inlet temperature"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} inlet temperature"
     register_type: read
     address: 4036
     value_type: S_WORD
@@ -68,8 +72,8 @@ sensor:
       - multiply: .1
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} inlet humidity"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} inlet humidity"
     register_type: read
     address: 4037
     value_type: U_WORD
@@ -80,8 +84,8 @@ sensor:
       - multiply: .1
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} exhaust flow"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} exhaust flow"
     register_type: read
     address: 4042
     value_type: U_WORD
@@ -90,8 +94,8 @@ sensor:
     icon: "mdi:weather-windy"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} exhaust fan"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} exhaust fan"
     register_type: read
     address: 4044
     value_type: U_WORD
@@ -100,8 +104,8 @@ sensor:
     icon: "mdi:wind-power"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} exhaust temperature"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} exhaust temperature"
     register_type: read
     address: 4046
     value_type: S_WORD
@@ -112,8 +116,8 @@ sensor:
       - multiply: .1
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} exhaust humidity"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} exhaust humidity"
     register_type: read
     address: 4047
     value_type: U_WORD
@@ -129,8 +133,8 @@ sensor:
   # 3: high
   # 255: invalid position
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset value"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset value"
     register_type: read
     address: 4080
     value_type: U_WORD
@@ -139,8 +143,8 @@ sensor:
 
   # Operating time in hours
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} operating hours"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} operating hours"
     register_type: read
     address: 4113
     value_type: U_DWORD
@@ -150,8 +154,8 @@ sensor:
 
   # Number of hours the appliance is on since last filter reset.
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} filter operating hours"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} filter operating hours"
     register_type: read
     address: 4115
     value_type: U_WORD
@@ -161,8 +165,8 @@ sensor:
 
   ## Amount of flow in units of m3/h since last filter reset
   #- platform: modbus_controller
-  #  modbus_controller_id: "${prefix}_modbus"
-  #  name: "${friendly_prefix} filter operating volume"
+  #  modbus_controller_id: "${controller_id}"
+  #  name: "${prefix} filter operating volume"
   #  register_type: read
   #  address: 4116
   #  value_type: U_DWORD
@@ -173,8 +177,8 @@ sensor:
 
   ## Amount of flow in units of m3/h since putting into use.
   #- platform: modbus_controller
-  #  modbus_controller_id: "${prefix}_modbus"
-  #  name: "${friendly_prefix} operating volume"
+  #  modbus_controller_id: "${controller_id}"
+  #  name: "${prefix} operating volume"
   #  register_type: read
   #  address: 4118
   #  value_type: U_DWORD
@@ -185,9 +189,9 @@ sensor:
 
 text_sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} software version"
-    id: "${prefix}_software_version"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} software version"
+    id: "${controller_id}_software_version"
     register_type: read
     address: 4000
     register_count: 3
@@ -206,8 +210,8 @@ text_sensor:
     disabled_by_default: true
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} hardware version"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} hardware version"
     register_type: read
     address: 4003
     register_count: 1
@@ -225,8 +229,8 @@ text_sensor:
   # [E][modbus_controller:094]: Modbus error function code: 0x4 exception: 2
   # [E][modbus_controller:103]: Modbus error - last command: function code=0x4  register address = 0xFAD  registers count=6 payload size=0
   #- platform: modbus_controller
-  #  modbus_controller_id: "${prefix}_modbus"
-  #  name: "${friendly_prefix} serial number"
+  #  modbus_controller_id: "${controller_id}"
+  #  name: "${prefix} serial number"
   #  register_type: read
   #  address: 4013
   #  register_count: 6
@@ -238,8 +242,8 @@ text_sensor:
   #  icon: "mdi:qrcode"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} fan control mode"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} fan control mode"
     register_type: read
     address: 4021
     entity_category: DIAGNOSTIC
@@ -261,8 +265,8 @@ text_sensor:
       return mode_str;
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} bypass status"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} bypass status"
     register_type: read
     address: 4050
     entity_category: DIAGNOSTIC
@@ -283,8 +287,8 @@ text_sensor:
 
   ## Available from Software version S3.01.02 (basic PCB) and S2.02.05 (Plus PCB)
   #- platform: modbus_controller
-  #  modbus_controller_id: "${prefix}_modbus"
-  #  name: "${friendly_prefix} status"
+  #  modbus_controller_id: "${controller_id}"
+  #  name: "${prefix} status"
   #  register_type: read
   #  address: 4800
   #  entity_category: DIAGNOSTIC
@@ -304,16 +308,16 @@ text_sensor:
 
 switch:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} imbalance allowed"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} imbalance allowed"
     register_type: holding
     address: 6033
     entity_category: CONFIG
     icon: "mdi:scale-unbalanced"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} on/off"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} on/off"
     register_type: holding
     address: 8003
     inverted: true
@@ -330,8 +334,8 @@ switch:
       return {};  // do not do anything (should return appropriate payload)
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} filter warning reset"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} filter warning reset"
     icon: mdi:air-filter
     register_type: holding
     address: 8010
@@ -339,8 +343,8 @@ switch:
 
 select:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow mode"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow mode"
     icon: mdi:car-cruise-control
     address: 6030
     value_type: U_WORD
@@ -351,7 +355,7 @@ select:
     entity_category: CONFIG
     #set_action:
     #  - lambda: |-
-    #      auto setpoint = id(${prefix}_flow_setpoint);
+    #      auto setpoint = id(${controller_id}_flow_setpoint);
     #      if (x == 2) {
     #      } else {
     #      }
@@ -360,8 +364,8 @@ select:
     #      call.perform();
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} bypass"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} bypass"
     address: 6100
     value_type: U_WORD
     optionsmap:
@@ -372,8 +376,8 @@ select:
     icon: "mdi:transit-skip"
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} control mode"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} control mode"
     address: 8000
     value_type: U_WORD
     # With selection 2 it is not possible to use a control unit, humidity sensor
@@ -388,9 +392,9 @@ select:
 
 number:
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset 0"
-    id: "${prefix}_flow_preset0"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset 0"
+    id: "${controller_id}_flow_preset0"
     address: 6000
     value_type: U_WORD
     entity_category: CONFIG
@@ -400,7 +404,7 @@ number:
     step: 5
     icon: "mdi:fan-remove"
     write_lambda: |-
-      auto next = id(${prefix}_flow_preset1);
+      auto next = id(${controller_id}_flow_preset1);
       int next_state = (int)next->state;
       if (x > next_state) {
         return next_state;
@@ -408,9 +412,9 @@ number:
       return x;
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset 1"
-    id: "${prefix}_flow_preset1"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset 1"
+    id: "${controller_id}_flow_preset1"
     address: 6001
     value_type: U_WORD
     entity_category: CONFIG
@@ -420,13 +424,13 @@ number:
     step: 5
     icon: "mdi:fan-speed-1"
     write_lambda: |-
-      auto previous = id(${prefix}_flow_preset0);
+      auto previous = id(${controller_id}_flow_preset0);
       int prev_state = (int)previous->state;
       if (x < prev_state) {
         return prev_state;
       }
 
-      auto next = id(${prefix}_flow_preset2);
+      auto next = id(${controller_id}_flow_preset2);
       int next_state = (int)next->state;
       if (x > next_state) {
         return next_state;
@@ -435,9 +439,9 @@ number:
       return x;
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset 2"
-    id: "${prefix}_flow_preset2"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset 2"
+    id: "${controller_id}_flow_preset2"
     address: 6002
     value_type: U_WORD
     entity_category: CONFIG
@@ -447,13 +451,13 @@ number:
     step: 150
     icon: "mdi:fan-speed-2"
     write_lambda: |-
-      auto previous = id(${prefix}_flow_preset1);
+      auto previous = id(${controller_id}_flow_preset1);
       int prev_state = (int)previous->state;
       if (x < prev_state) {
         return prev_state;
       }
 
-      auto next = id(${prefix}_flow_preset3);
+      auto next = id(${controller_id}_flow_preset3);
       int next_state = (int)next->state;
       if (x > next_state) {
         return next_state;
@@ -462,9 +466,9 @@ number:
       return x;
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset 3"
-    id: "${prefix}_flow_preset3"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset 3"
+    id: "${controller_id}_flow_preset3"
     address: 6003
     value_type: U_WORD
     entity_category: CONFIG
@@ -474,7 +478,7 @@ number:
     step: 5
     icon: "mdi:fan-speed-3"
     write_lambda: |-
-      auto previous = id(${prefix}_flow_preset2);
+      auto previous = id(${controller_id}_flow_preset2);
       int prev_state = (int)previous->state;
       if (x < prev_state) {
         return prev_state;
@@ -484,8 +488,8 @@ number:
 
   # Days before filter warning
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} filter warning days"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} filter warning days"
     address: 6120
     value_type: U_WORD
     entity_category: CONFIG
@@ -498,8 +502,8 @@ number:
   # This defines the default position of the 4-position switch. This will be the
   # position set if no switch is connected.
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} default flow preset"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} default flow preset"
     icon: mdi:fan
     address: 6031
     value_type: U_WORD
@@ -510,10 +514,10 @@ number:
     disabled_by_default: true
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow preset"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow preset"
     icon: mdi:weather-windy
-    id: "${prefix}_flow_preset"
+    id: "${controller_id}_flow_preset"
     address: 8001
     value_type: U_WORD
     mode: slider  # one of: box/slider
@@ -522,9 +526,9 @@ number:
     step: 1
 
   - platform: modbus_controller
-    modbus_controller_id: "${prefix}_modbus"
-    name: "${friendly_prefix} flow setpoint"
-    id: "${prefix}_flow_setpoint"
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} flow setpoint"
+    id: "${controller_id}_flow_setpoint"
     address: 8002
     value_type: U_WORD
     mode: slider  # one of: box/slider
