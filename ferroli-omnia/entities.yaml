@@ -11,21 +11,21 @@ binary_sensor:
   # BIT2 Anti-freezing
   # BIT1 Defrosting
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} oil return"
     register_type: holding
     address: 128
     bitmask: 0x8
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} anti-freezing"
     register_type: holding
     address: 128
     bitmask: 0x4
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} defrosting"
     register_type: holding
     address: 128
@@ -37,7 +37,7 @@ sensor:
   # Operating frequency
   # Compressor operating frequency in Hz
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} operating frequency"
     register_type: holding
     address: 100
@@ -49,7 +49,7 @@ sensor:
   # Fan Speed
   # Fan speed, in r/min
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} fan speed"
     icon: "mdi:wind-power"
     register_type: holding
@@ -62,7 +62,7 @@ sensor:
   # 104(PLC: 40105) Water inlet temperature
   # TW_in, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} water inlet temperature"
     register_type: holding
     address: 104
@@ -76,7 +76,7 @@ sensor:
   # Register address 105(PLC: 40106) Water outlet temperature
   # TW_out, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} Water outlet temperature"
     register_type: holding
     address: 105
@@ -90,7 +90,7 @@ sensor:
   # Register address 107(PLC: 40108) T4 Temperature
   # Outdoor ambient temperature unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} ambient temperature"
     register_type: holding
     address: 107
@@ -104,7 +104,7 @@ sensor:
   # Register address 110(PLC: 40111) T1
   # System total water outlet temperature (behind the auxiliary heater) ,unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} system water outlet temperature"
     register_type: holding
     address: 110
@@ -118,7 +118,7 @@ sensor:
   # 119 (PLC: 40120) Outdoor unit voltage
   # Outdoor unit voltage, unit: V
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} operating voltage"
     id: "${device_id}_operating_voltage"
     register_type: holding
@@ -133,7 +133,7 @@ sensor:
   # 122 (PLC: 40123) Compressor operation time
   # Compressor operating time in hour
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} lifetime operation"
     register_type: holding
     address: 122
@@ -147,7 +147,7 @@ sensor:
   # 123 (PLC: 40124) Unit capacity
   # 0702 for 200 register is reserved. When it is 071x, data 4-30 means 4-30kW
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} model capacity"
     register_type: holding
     address: 123
@@ -160,7 +160,7 @@ sensor:
   # 124(PLC: 40125) Current fault
   # Check the code table for detailed fault codes
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} status code"
     register_type: holding
     address: 124
@@ -171,7 +171,7 @@ sensor:
   # Register address 130(PLC: 40131) Software version
   # 1~99 is the software version of hydronic module
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} software version"
     register_type: holding
     address: 130
@@ -182,7 +182,7 @@ sensor:
   # Register address 131(PLC: 40132) Wired controller version No.
   # 1~99 is the wired controller's version number.
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} controller version"
     register_type: holding
     address: 131
@@ -192,7 +192,7 @@ sensor:
   # Register address 136(PLC: 40137) Climate curve T1S calculated value 1
   # The corresponding calculated T1S of zone 1
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} curve calculated setpoint"
     register_type: holding
     address: 136
@@ -207,7 +207,7 @@ sensor:
   # Register address 138( PLC: 40139) Water flow
   # The actual value*100, unit: m3/H
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} water flow"
     register_type: holding
     address: 138
@@ -227,7 +227,7 @@ sensor:
   # Register address 140(PLC: 40141) Ability of Hydraulic module
   # The actual value*100, unit: kW
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} output power"
     id: "${device_id}_output_power"
     register_type: holding
@@ -296,7 +296,7 @@ sensor:
   # Temperature upper limit of T1S cooling
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling maximum setpoint"
     id: ${device_id}_max_cool_setpoint
     register_type: holding
@@ -312,7 +312,7 @@ sensor:
   # Temperature lower limit of T1S cooling
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling minimum setpoint"
     id: ${device_id}_min_cool_setpoint
     register_type: holding
@@ -328,7 +328,7 @@ sensor:
   # Temperature upper limit of T1S heating
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating maximum setpoint"
     id: ${device_id}_max_heat_setpoint
     register_type: holding
@@ -344,7 +344,7 @@ sensor:
   # Temperature lower limit of T1S heating
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating minimum setpoint"
     id: ${device_id}_min_heat_setpoint
     register_type: holding
@@ -425,7 +425,7 @@ select:
           call.set_value(state);
           call.perform();
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} HVAC mode"
     id: "${device_id}_hvac_mode"
     icon: "mdi:heat-pump"
@@ -533,7 +533,7 @@ switch:
   # BIT1 0: power off floor heating; 1: power on floor heating;(zone 1)
   #	(water flow temperature control)
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} on/off"
     id: "${device_id}_enable"
     icon: "mdi:power-standby"
@@ -553,7 +553,7 @@ number:
   # Note: internal use only; should not be exposed to UI
   # Note: this variable will refuse to commit changes if device is active
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: ${prefix} function
     id: ${device_id}_function
     disabled_by_default: true
@@ -574,7 +574,7 @@ number:
   # Bit8-Bit15 Climate Curve 1-9(zone 2)
   # Bit0-Bit7 Climate Curve 1-9(zone 1)
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} curve selected"
     id: "${device_id}_curve_selected"
     register_type: holding
@@ -591,7 +591,7 @@ number:
       ESP_LOGD("main", "write curve selection: %d", writeval);
       return writeval;
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} curve selected zone2"
     id: "${device_id}_curve_selected_zone2"
     register_type: holding
@@ -617,7 +617,7 @@ number:
   #   T1S high temp setting range is 35~65°C.
   # Note: high/low range setting depends on emission system (floor/radiators)
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} preset setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -652,7 +652,7 @@ number:
   # DHW PUMP water return running time. It is five minutes by default and can
   # be adjusted between 5 and 120 min at an interval of 1 min.
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} pump running time"
     entity_category: CONFIG
     device_class: DURATION
@@ -665,7 +665,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling curve9 low setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -679,7 +679,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling curve9 high setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -693,7 +693,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling curve9 low ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -706,7 +706,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} cooling curve9 high ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -719,7 +719,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating curve9 low setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -733,7 +733,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating curve9 high setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -747,7 +747,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating curve9 low ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -760,7 +760,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} heating curve9 high ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -779,7 +779,7 @@ number:
   # Bit0-3: The type of zone 1 end for heating mode
   # Note: the mapping is (needs checking): 0=fan coil; 1=radiator; 2=floor
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     id: "${device_id}_emission_type"
     address: 272
     value_type: U_WORD
@@ -803,9 +803,9 @@ number:
 
 text_sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} current HVAC mode"
-    id: "${device_id}_current_hvac_mode"
+    id: ${device_id}_current_hvac_mode
     register_type: holding
     register_count: 1
     response_size: 2
@@ -822,7 +822,7 @@ text_sensor:
           - 0002 -> cool
           - 0003 -> heat
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: ${device_id}
     name: "${prefix} status"
     id: "${device_id}_status"
     register_type: holding
