@@ -5,7 +5,7 @@ sensor:
   # Register address 103(PLC: 40104) PMV openness
   # Openness of the outdoor unit's electronic expansion valve in P
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} expansion valve openness"
     register_type: holding
     address: 103
@@ -15,7 +15,7 @@ sensor:
   # Register address 106(PLC: 40107) T3 Temperature
   # Condenser temperature, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} condenser temperature"
     register_type: holding
     address: 106
@@ -27,7 +27,7 @@ sensor:
   # Register address 108(PLC: 40109) Discharge temperature
   # Compressor discharge temperature Tp unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} condenser discharge temperature"
     register_type: holding
     address: 108
@@ -39,7 +39,7 @@ sensor:
   # Register address 109(PLC: 40110) Suction temperature
   # Compressor suction temperature Th, unit:°C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} condenser suction temperature"
     register_type: holding
     address: 109
@@ -51,7 +51,7 @@ sensor:
   # Register address 112(PLC: 40113) T2
   # Refrigerant liquid side temperature, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} refrigerant liquid side temperature"
     register_type: holding
     address: 112
@@ -63,7 +63,7 @@ sensor:
   # Register address 113(PLC: 40114) T2B
   # Refrigerant gas side temperature, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} refrigerant gas side temperature"
     register_type: holding
     address: 113
@@ -75,7 +75,7 @@ sensor:
   # Register address 116(PLC: 40117) Pressure 1
   # Outdoor unit high pressure value, unit: kPa
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} high pressure"
     register_type: holding
     address: 116
@@ -88,7 +88,7 @@ sensor:
   # Outdoor unit low pressure value, unit: kPa
   # Note: this reading appears to have always the same value
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} low pressure"
     register_type: holding
     address: 117
@@ -101,7 +101,7 @@ sensor:
   # Outdoor unit operating current, unit: A
   # Note: the resolution of this reading is too low to be useful
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} operating current"
     id: "${prefix}_operating_current"
     register_type: holding
@@ -123,7 +123,7 @@ sensor:
   # 132(PLC: 40133) Unit target frequency
   # Hz
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} target frequency"
     register_type: holding
     address: 132
@@ -136,7 +136,7 @@ sensor:
   # DC bus current
   # Unit: A
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} DC bus current"
     register_type: holding
     address: 133
@@ -149,7 +149,7 @@ sensor:
   # DC bus voltage
   # The actual value/10, unit: V
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} DC bus voltage"
     register_type: holding
     address: 134
@@ -161,7 +161,7 @@ sensor:
   # Register address 135( PLC: 40136) TF module temperature
   # Feedback on outdoor unit, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} TF module temperature"
     register_type: holding
     address: 135
@@ -177,7 +177,7 @@ number:
   # default setting: 5 min
   # Note: this value does not accept any other setting than the default
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} cooling mode compressor startup interval"
     disabled_by_default: true
     device_class: DURATION
@@ -193,7 +193,7 @@ number:
   # Default setting: 5°C, range: 2~10°C, setting interval: 1°C
   # Note: this value does not accept any other setting than the default
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} cooling water temperature delta"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -208,7 +208,7 @@ number:
   # Time interval of compressor start-up in the heating mode; range: 5~5 min,
   # default setting: 5 min
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} heating mode compressor startup interval"
     disabled_by_default: true
     device_class: DURATION
@@ -223,7 +223,7 @@ number:
   # Register address 229(PLC: 40230) dT1SH
   # Default setting: 5°C, range: 2-20°C;
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} heating water temperature delta"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -235,7 +235,7 @@ number:
     step: 1
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} power limit"
     icon: "mdi:car-speed-limiter"
     address: 269

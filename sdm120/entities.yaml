@@ -1,6 +1,6 @@
 sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} voltage"
     register_type: read
     address: 30001
@@ -10,7 +10,7 @@ sensor:
     accuracy_decimals: 1
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} current"
     register_type: read
     address: 3007
@@ -21,7 +21,7 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} power"
     register_type: read
     address: 30013
@@ -30,7 +30,7 @@ sensor:
     unit_of_measurement: W
     accuracy_decimals: 1
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} apparent power"
     register_type: read
     address: 30019
@@ -41,7 +41,7 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} reactive power"
     register_type: read
     address: 30025
@@ -52,7 +52,7 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} power factor"
     register_type: read
     address: 30031
@@ -65,7 +65,7 @@ sensor:
       - multiply: 100
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} frequency"
     register_type: read
     address: 30071
@@ -76,7 +76,7 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} forward energy"
     register_type: read
     address: 30073
@@ -85,7 +85,7 @@ sensor:
     unit_of_measurement: kWh
     accuracy_decimals: 3
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} reverse energy"
     register_type: read
     address: 30075
@@ -94,7 +94,7 @@ sensor:
     unit_of_measurement: kWh
     accuracy_decimals: 3
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} energy"
     register_type: read
     address: 30343
@@ -103,7 +103,7 @@ sensor:
     unit_of_measurement: kWh
     accuracy_decimals: 3
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} forward maximum demand"
     register_type: read
     address: 30091
@@ -114,7 +114,7 @@ sensor:
     entity_category: DIAGNOSTIC
     disabled_by_default: true
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} reverse maximum demand"
     register_type: read
     address: 30095
@@ -126,7 +126,7 @@ sensor:
     disabled_by_default: true
 
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} firmware version"
     register_type: read
     address: 464516
@@ -137,7 +137,7 @@ sensor:
 
 text_sensor:
   - platform: modbus_controller
-    modbus_controller_id: "${device_id}"
+    modbus_controller_id: "${controller_id}"
     name: "${prefix} serial number"
     register_type: read
     address: 464513

@@ -1,7 +1,7 @@
 # Listing of entities that should be included to connect an Omnia heat pump.
 #
 # Required variables:
-#   device_id: the modbus controller id
+#   controller_id: the modbus controller id
 #   prefix: the prefix to use for all entity ids
 
 binary_sensor:
@@ -11,21 +11,21 @@ binary_sensor:
   # BIT2 Anti-freezing
   # BIT1 Defrosting
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} oil return"
     register_type: holding
     address: 128
     bitmask: 0x8
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} anti-freezing"
     register_type: holding
     address: 128
     bitmask: 0x4
     entity_category: DIAGNOSTIC
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} defrosting"
     register_type: holding
     address: 128
@@ -37,7 +37,7 @@ sensor:
   # Operating frequency
   # Compressor operating frequency in Hz
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} operating frequency"
     register_type: holding
     address: 100
@@ -49,7 +49,7 @@ sensor:
   # Fan Speed
   # Fan speed, in r/min
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} fan speed"
     icon: "mdi:wind-power"
     register_type: holding
@@ -62,7 +62,7 @@ sensor:
   # 104(PLC: 40105) Water inlet temperature
   # TW_in, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} water inlet temperature"
     register_type: holding
     address: 104
@@ -76,7 +76,7 @@ sensor:
   # Register address 105(PLC: 40106) Water outlet temperature
   # TW_out, unit: °C
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} Water outlet temperature"
     register_type: holding
     address: 105
@@ -90,7 +90,7 @@ sensor:
   # Register address 107(PLC: 40108) T4 Temperature
   # Outdoor ambient temperature unit: °C
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} ambient temperature"
     register_type: holding
     address: 107
@@ -104,7 +104,7 @@ sensor:
   # Register address 110(PLC: 40111) T1
   # System total water outlet temperature (behind the auxiliary heater) ,unit: °C
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} system water outlet temperature"
     register_type: holding
     address: 110
@@ -118,9 +118,9 @@ sensor:
   # 119 (PLC: 40120) Outdoor unit voltage
   # Outdoor unit voltage, unit: V
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} operating voltage"
-    id: "${device_id}_operating_voltage"
+    id: "${controller_id}_operating_voltage"
     register_type: holding
     address: 119
     entity_category: DIAGNOSTIC
@@ -133,7 +133,7 @@ sensor:
   # 122 (PLC: 40123) Compressor operation time
   # Compressor operating time in hour
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} lifetime operation"
     register_type: holding
     address: 122
@@ -147,7 +147,7 @@ sensor:
   # 123 (PLC: 40124) Unit capacity
   # 0702 for 200 register is reserved. When it is 071x, data 4-30 means 4-30kW
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} model capacity"
     register_type: holding
     address: 123
@@ -160,7 +160,7 @@ sensor:
   # 124(PLC: 40125) Current fault
   # Check the code table for detailed fault codes
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} status code"
     register_type: holding
     address: 124
@@ -171,7 +171,7 @@ sensor:
   # Register address 130(PLC: 40131) Software version
   # 1~99 is the software version of hydronic module
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} software version"
     register_type: holding
     address: 130
@@ -182,7 +182,7 @@ sensor:
   # Register address 131(PLC: 40132) Wired controller version No.
   # 1~99 is the wired controller's version number.
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} controller version"
     register_type: holding
     address: 131
@@ -192,7 +192,7 @@ sensor:
   # Register address 136(PLC: 40137) Climate curve T1S calculated value 1
   # The corresponding calculated T1S of zone 1
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} curve calculated setpoint"
     register_type: holding
     address: 136
@@ -207,7 +207,7 @@ sensor:
   # Register address 138( PLC: 40139) Water flow
   # The actual value*100, unit: m3/H
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} water flow"
     register_type: holding
     address: 138
@@ -223,13 +223,13 @@ sensor:
     on_value_range:
       - below: 0
         then:
-          - switch.turn_off: "${device_id}_enable"
+          - switch.turn_off: "${controller_id}_enable"
   # Register address 140(PLC: 40141) Ability of Hydraulic module
   # The actual value*100, unit: kW
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} output power"
-    id: "${device_id}_output_power"
+    id: "${controller_id}_output_power"
     register_type: holding
     address: 140
     device_class: POWER
@@ -240,7 +240,7 @@ sensor:
       - multiply: 10
   - platform: integration
     name: "${prefix} energy delivered"
-    sensor: "${device_id}_output_power"
+    sensor: "${controller_id}_output_power"
     time_unit: h
     unit_of_measurement: kWh
     integration_method: trapezoid
@@ -255,9 +255,9 @@ sensor:
   # Register address 144(PLC: 40145)
   # Lower bits for electricity consumption
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: ${prefix} lifetime energy consumption
-    id: ${device_id}_lifetime_energy_consumption
+    id: ${controller_id}_lifetime_energy_consumption
     register_type: holding
     address: 143
     value_type: U_DWORD
@@ -271,9 +271,9 @@ sensor:
   # Register address 146(PLC: 40147)
   # Lower bits for power output
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: ${prefix} lifetime energy delivered
-    id: ${device_id}_lifetime_energy_delivered
+    id: ${controller_id}_lifetime_energy_delivered
     register_type: holding
     address: 145
     value_type: U_DWORD
@@ -286,7 +286,7 @@ sensor:
   - platform: template
     name: "${prefix} lifetime COP"
     lambda: |-
-        return 100 * id(${device_id}_lifetime_energy_delivered).state / id(${device_id}_lifetime_energy_consumption).state;
+        return 100 * id(${controller_id}_lifetime_energy_delivered).state / id(${controller_id}_lifetime_energy_consumption).state;
     update_interval: 1h
     unit_of_measurement: "%"
     icon: mdi:percent
@@ -296,9 +296,9 @@ sensor:
   # Temperature upper limit of T1S cooling
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling maximum setpoint"
-    id: ${device_id}_max_cool_setpoint
+    id: ${controller_id}_max_cool_setpoint
     register_type: holding
     address: 201
     device_class: TEMPERATURE
@@ -312,9 +312,9 @@ sensor:
   # Temperature lower limit of T1S cooling
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling minimum setpoint"
-    id: ${device_id}_min_cool_setpoint
+    id: ${controller_id}_min_cool_setpoint
     register_type: holding
     address: 202
     device_class: TEMPERATURE
@@ -328,9 +328,9 @@ sensor:
   # Temperature upper limit of T1S heating
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating maximum setpoint"
-    id: ${device_id}_max_heat_setpoint
+    id: ${controller_id}_max_heat_setpoint
     register_type: holding
     address: 203
     device_class: TEMPERATURE
@@ -344,9 +344,9 @@ sensor:
   # Temperature lower limit of T1S heating
   # Lower 8 bits are for zone 1. higher 8 bits are for zone 2
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating minimum setpoint"
-    id: ${device_id}_min_heat_setpoint
+    id: ${controller_id}_min_heat_setpoint
     register_type: holding
     address: 204
     device_class: TEMPERATURE
@@ -367,7 +367,7 @@ select:
       - climate curve
       - climate curve eco
     lambda: |-
-      esphome::modbus_controller::ModbusNumber *number = id(${device_id}_function);
+      esphome::modbus_controller::ModbusNumber *number = id(${controller_id}_function);
       int state = (int)number->state;
       if (state & (1 << 10))
         return to_string("climate curve eco");
@@ -377,7 +377,7 @@ select:
         return to_string("preset");
     set_action:
       - lambda: |-
-          auto number = id(${device_id}_function);
+          auto number = id(${controller_id}_function);
           int state = (int)number->state;
           state &= 0xffff - (1 << 13) - (1 << 12) - (1 << 10);
           if (x == "climate curve") {
@@ -399,7 +399,7 @@ select:
       - silent
       - more silent
     lambda: |-
-      esphome::modbus_controller::ModbusNumber *number = id(${device_id}_function);
+      esphome::modbus_controller::ModbusNumber *number = id(${controller_id}_function);
       int state = (int)number->state;
       if (state & (1 << 6)) {
         if (state & (1 << 7))
@@ -411,7 +411,7 @@ select:
       }
     set_action:
       - lambda: |-
-          auto number = id(${device_id}_function);
+          auto number = id(${controller_id}_function);
           int state = (int)number->state;
           // unset both silent bits to set them later
           state &= 0xffff - (1 << 6) - (1 << 7);
@@ -425,9 +425,9 @@ select:
           call.set_value(state);
           call.perform();
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} HVAC mode"
-    id: "${device_id}_hvac_mode"
+    id: "${controller_id}_hvac_mode"
     icon: "mdi:heat-pump"
     address: 1
     value_type: U_WORD
@@ -438,7 +438,7 @@ select:
     entity_category: CONFIG
   - platform: template
     name: "${prefix} heating emission type"
-    id: ${device_id}_emission_heat_zone1
+    id: ${controller_id}_emission_heat_zone1
     entity_category: CONFIG
     options:
       - "fan coil"
@@ -448,19 +448,19 @@ select:
     set_action:
       - lambda: |-
             int offset = 0;
-            int i = id(${device_id}_emission_heat_zone1).index_of(x).value();
+            int i = id(${controller_id}_emission_heat_zone1).index_of(x).value();
             int bitmask = 0xffff - (0xf << offset);
-            int old_state = (int)id(${device_id}_emission_type).state;
+            int old_state = (int)id(${controller_id}_emission_type).state;
             int new_state = (old_state & bitmask) | (i << offset);
             if (old_state != new_state) {
               ESP_LOGD("main", "setting emssion type: %d -> %d", old_state, new_state);
-              auto call = id(${device_id}_emission_type).make_call();
+              auto call = id(${controller_id}_emission_type).make_call();
               call.set_value(new_state);
               call.perform();
             }
   - platform: template
     name: "${prefix} heating emission type zone2"
-    id: ${device_id}_emission_heat_zone2
+    id: ${controller_id}_emission_heat_zone2
     disabled_by_default: true
     entity_category: CONFIG
     options:
@@ -471,19 +471,19 @@ select:
     set_action:
       - lambda: |-
             int offset = 4;
-            int i = id(${device_id}_emission_heat_zone2).index_of(x).value();
+            int i = id(${controller_id}_emission_heat_zone2).index_of(x).value();
             int bitmask = 0xffff - (0xf << offset);
-            int old_state = (int)id(${device_id}_emission_type).state;
+            int old_state = (int)id(${controller_id}_emission_type).state;
             int new_state = (old_state & bitmask) | (i << offset);
             if (old_state != new_state) {
               ESP_LOGD("main", "setting emssion type: %d -> %d", old_state, new_state);
-              auto call = id(${device_id}_emission_type).make_call();
+              auto call = id(${controller_id}_emission_type).make_call();
               call.set_value(new_state);
               call.perform();
             }
   - platform: template
     name: "${prefix} cooling emission type"
-    id: ${device_id}_emission_cool_zone1
+    id: ${controller_id}_emission_cool_zone1
     entity_category: CONFIG
     options:
       - "fan coil"
@@ -493,19 +493,19 @@ select:
     set_action:
       - lambda: |-
             int offset = 8;
-            int i = id(${device_id}_emission_cool_zone1).index_of(x).value();
+            int i = id(${controller_id}_emission_cool_zone1).index_of(x).value();
             int bitmask = 0xffff - (0xf << offset);
-            int old_state = (int)id(${device_id}_emission_type).state;
+            int old_state = (int)id(${controller_id}_emission_type).state;
             int new_state = (old_state & bitmask) | (i << offset);
             if (old_state != new_state) {
               ESP_LOGD("main", "setting emssion type: %d -> %d", old_state, new_state);
-              auto call = id(${device_id}_emission_type).make_call();
+              auto call = id(${controller_id}_emission_type).make_call();
               call.set_value(new_state);
               call.perform();
             }
   - platform: template
     name: "${prefix} cooling emission type zone2"
-    id: ${device_id}_emission_cool_zone2
+    id: ${controller_id}_emission_cool_zone2
     disabled_by_default: true
     entity_category: CONFIG
     options:
@@ -516,13 +516,13 @@ select:
     set_action:
       - lambda: |-
             int offset = 12;
-            int i = id(${device_id}_emission_cool_zone2).index_of(x).value();
+            int i = id(${controller_id}_emission_cool_zone2).index_of(x).value();
             int bitmask = 0xffff - (0xf << offset);
-            int old_state = (int)id(${device_id}_emission_type).state;
+            int old_state = (int)id(${controller_id}_emission_type).state;
             int new_state = (old_state & bitmask) | (i << offset);
             if (old_state != new_state) {
               ESP_LOGD("main", "setting emssion type: %d -> %d", old_state, new_state);
-              auto call = id(${device_id}_emission_type).make_call();
+              auto call = id(${controller_id}_emission_type).make_call();
               call.set_value(new_state);
               call.perform();
             }
@@ -533,9 +533,9 @@ switch:
   # BIT1 0: power off floor heating; 1: power on floor heating;(zone 1)
   #	(water flow temperature control)
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} on/off"
-    id: "${device_id}_enable"
+    id: "${controller_id}_enable"
     icon: "mdi:power-standby"
     register_type: holding
     address: 0
@@ -553,16 +553,16 @@ number:
   # Note: internal use only; should not be exposed to UI
   # Note: this variable will refuse to commit changes if device is active
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: ${prefix} function
-    id: ${device_id}_function
+    id: ${controller_id}_function
     disabled_by_default: true
     register_type: holding
     address: 5
     step: 1
     mode: box
     write_lambda: |-
-      if (id(${device_id}_enable).state) {
+      if (id(${controller_id}_enable).state) {
         ESP_LOGI("main", "refuse to write function code: %.0f", x);
         return {};
       } else {
@@ -574,9 +574,9 @@ number:
   # Bit8-Bit15 Climate Curve 1-9(zone 2)
   # Bit0-Bit7 Climate Curve 1-9(zone 1)
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} curve selected"
-    id: "${device_id}_curve_selected"
+    id: "${controller_id}_curve_selected"
     register_type: holding
     address: 6
     value_type: U_WORD
@@ -587,13 +587,13 @@ number:
     entity_category: CONFIG
     lambda: "return (int)x & 0xff;"
     write_lambda: |-
-      int writeval = ((int)id(${device_id}_curve_selected_zone2).state << 8) | (int)x;
+      int writeval = ((int)id(${controller_id}_curve_selected_zone2).state << 8) | (int)x;
       ESP_LOGD("main", "write curve selection: %d", writeval);
       return writeval;
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} curve selected zone2"
-    id: "${device_id}_curve_selected_zone2"
+    id: "${controller_id}_curve_selected_zone2"
     register_type: holding
     address: 6
     value_type: U_WORD
@@ -604,7 +604,7 @@ number:
     entity_category: CONFIG
     lambda: "return (int)x >> 8;"
     write_lambda: |-
-      int writeval = ((int)x << 8) | (int)id(${device_id}_curve_selected).state;
+      int writeval = ((int)x << 8) | (int)id(${controller_id}_curve_selected).state;
       ESP_LOGD("main", "write curve selection: %d", writeval);
       return writeval;
   # Register address 11(PLC: 40012) T1S
@@ -617,7 +617,7 @@ number:
   #   T1S high temp setting range is 35~65°C.
   # Note: high/low range setting depends on emission system (floor/radiators)
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} preset setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -632,15 +632,15 @@ number:
     skip_updates: 30
     write_lambda: |-
       float min_value, max_value;
-      if (id(${device_id}_hvac_mode).state == "cool") {
-        min_value = id(${device_id}_min_cool_setpoint).state;
-        max_value = id(${device_id}_max_cool_setpoint).state;
-      } else if (id(${device_id}_hvac_mode).state == "heat") {
-        min_value = id(${device_id}_min_heat_setpoint).state;
-        max_value = id(${device_id}_max_heat_setpoint).state;
+      if (id(${controller_id}_hvac_mode).state == "cool") {
+        min_value = id(${controller_id}_min_cool_setpoint).state;
+        max_value = id(${controller_id}_max_cool_setpoint).state;
+      } else if (id(${controller_id}_hvac_mode).state == "heat") {
+        min_value = id(${controller_id}_min_heat_setpoint).state;
+        max_value = id(${controller_id}_max_heat_setpoint).state;
       } else {
-        min_value = id(${device_id}_min_cool_setpoint).state;
-        max_value = id(${device_id}_max_heat_setpoint).state;
+        min_value = id(${controller_id}_min_cool_setpoint).state;
+        max_value = id(${controller_id}_max_heat_setpoint).state;
       }
       if (x < min_value)
         return min_value;
@@ -652,7 +652,7 @@ number:
   # DHW PUMP water return running time. It is five minutes by default and can
   # be adjusted between 5 and 120 min at an interval of 1 min.
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} pump running time"
     entity_category: CONFIG
     device_class: DURATION
@@ -665,7 +665,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling curve9 low setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -679,7 +679,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling curve9 high setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -693,7 +693,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling curve9 low ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -706,7 +706,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} cooling curve9 high ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -719,7 +719,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating curve9 low setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -733,7 +733,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating curve9 high setpoint"
     icon: "mdi:thermometer-water"
     device_class: TEMPERATURE
@@ -747,7 +747,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating curve9 low ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -760,7 +760,7 @@ number:
     disabled_by_default: true
     skip_updates: 30
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} heating curve9 high ambient"
     device_class: TEMPERATURE
     unit_of_measurement: "°C"
@@ -779,8 +779,8 @@ number:
   # Bit0-3: The type of zone 1 end for heating mode
   # Note: the mapping is (needs checking): 0=fan coil; 1=radiator; 2=floor
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
-    id: "${device_id}_emission_type"
+    modbus_controller_id: ${controller_id}
+    id: "${controller_id}_emission_type"
     address: 272
     value_type: U_WORD
     internal: true
@@ -788,24 +788,24 @@ number:
     on_value:
       then:
         - select.set_index:
-            id: ${device_id}_emission_heat_zone1
+            id: ${controller_id}_emission_heat_zone1
             index: !lambda "return (int)x & 0xf;"
         - select.set_index:
-            id: ${device_id}_emission_heat_zone2
+            id: ${controller_id}_emission_heat_zone2
             index: !lambda "return ((int)x & 0xf0) >> 4;"
         - select.set_index:
-            id: ${device_id}_emission_cool_zone1
+            id: ${controller_id}_emission_cool_zone1
             index: !lambda "return ((int)x & 0xf00) >> 8;"
         - select.set_index:
-            id: ${device_id}_emission_cool_zone2
+            id: ${controller_id}_emission_cool_zone2
             index: !lambda "return ((int)x & 0xf000) >> 12;"
 
 
 text_sensor:
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} current HVAC mode"
-    id: ${device_id}_current_hvac_mode
+    id: ${controller_id}_current_hvac_mode
     register_type: holding
     register_count: 1
     response_size: 2
@@ -822,9 +822,9 @@ text_sensor:
           - 0002 -> cool
           - 0003 -> heat
   - platform: modbus_controller
-    modbus_controller_id: ${device_id}
+    modbus_controller_id: ${controller_id}
     name: "${prefix} status"
-    id: "${device_id}_status"
+    id: "${controller_id}_status"
     register_type: holding
     address: 124
     entity_category: DIAGNOSTIC
