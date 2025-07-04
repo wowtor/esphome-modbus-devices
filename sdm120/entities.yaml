@@ -1,0 +1,149 @@
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} voltage"
+    register_type: read
+    address: 30001
+    value_type: FP32
+    device_class: VOLTAGE
+    unit_of_measurement: V
+    accuracy_decimals: 1
+    entity_category: DIAGNOSTIC
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} current"
+    register_type: read
+    address: 3007
+    value_type: FP32
+    device_class: CURRENT
+    unit_of_measurement: A
+    accuracy_decimals: 3
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} power"
+    register_type: read
+    address: 30013
+    value_type: FP32
+    device_class: POWER
+    unit_of_measurement: W
+    accuracy_decimals: 1
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} apparent power"
+    register_type: read
+    address: 30019
+    value_type: FP32
+    device_class: APPARENT_POWER
+    unit_of_measurement: VA
+    accuracy_decimals: 0
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reactive power"
+    register_type: read
+    address: 30025
+    value_type: FP32
+    device_class: REACTIVE_POWER
+    unit_of_measurement: VAr
+    accuracy_decimals: 0
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} power factor"
+    register_type: read
+    address: 30031
+    value_type: FP32
+    device_class: POWER_FACTOR
+    unit_of_measurement: "%"
+    accuracy_decimals: 1
+    entity_category: DIAGNOSTIC
+    filters:
+      - multiply: 100
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} frequency"
+    register_type: read
+    address: 30071
+    value_type: FP32
+    device_class: FREQUENCY
+    unit_of_measurement: Hz
+    accuracy_decimals: 1
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} forward energy"
+    register_type: read
+    address: 30073
+    value_type: FP32
+    device_class: ENERGY
+    unit_of_measurement: kWh
+    accuracy_decimals: 3
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reverse energy"
+    register_type: read
+    address: 30075
+    value_type: FP32
+    device_class: ENERGY
+    unit_of_measurement: kWh
+    accuracy_decimals: 3
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} energy"
+    register_type: read
+    address: 30343
+    value_type: FP32
+    device_class: ENERGY
+    unit_of_measurement: kWh
+    accuracy_decimals: 3
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} forward maximum demand"
+    register_type: read
+    address: 30091
+    value_type: S_DWORD
+    device_class: POWER
+    unit_of_measurement: W
+    accuracy_decimals: 0
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} reverse maximum demand"
+    register_type: read
+    address: 30095
+    value_type: S_DWORD
+    device_class: POWER
+    unit_of_measurement: W
+    accuracy_decimals: 0
+    entity_category: DIAGNOSTIC
+    disabled_by_default: true
+
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} firmware version"
+    register_type: read
+    address: 464516
+    value_type: U_WORD
+    entity_category: DIAGNOSTIC
+    skip_updates: 720
+    disabled_by_default: true
+
+text_sensor:
+  - platform: modbus_controller
+    modbus_controller_id: "${controller_id}"
+    name: "${prefix} serial number"
+    register_type: read
+    address: 464513
+    register_count: 2
+    response_size: 8
+    raw_encode: HEXBYTES
+    entity_category: DIAGNOSTIC
+    skip_updates: 720
+    disabled_by_default: true
