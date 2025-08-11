@@ -80,8 +80,6 @@ sensor:
     unit_of_measurement: "%"
     entity_category: DIAGNOSTIC
     device_class: HUMIDITY
-    filters:
-      - multiply: .1
 
   - platform: modbus_controller
     modbus_controller_id: "${controller_id}"
@@ -124,8 +122,6 @@ sensor:
     unit_of_measurement: "%"
     entity_category: DIAGNOSTIC
     device_class: HUMIDITY
-    filters:
-      - multiply: .1
 
   # 0: holiday
   # 1: low
