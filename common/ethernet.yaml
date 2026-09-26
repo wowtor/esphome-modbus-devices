@@ -2,9 +2,11 @@ ethernet:
   type: LAN8720
   mdc_pin: GPIO23
   mdio_pin: GPIO18
-  clk_mode: GPIO0_IN
   phy_addr: 1
   power_pin: GPIO16
+  clk:
+    mode: CLK_EXT_IN
+    pin: GPIO0
 
 text_sensor:
   - platform: ethernet_info
