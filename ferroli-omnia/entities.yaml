@@ -807,7 +807,6 @@ text_sensor:
     name: "${prefix} current HVAC mode"
     id: ${controller_id}_current_hvac_mode
     register_type: holding
-    register_count: 1
     response_size: 2
     address: 101
     entity_category: DIAGNOSTIC

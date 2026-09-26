@@ -141,8 +141,7 @@ text_sensor:
     name: "${prefix} serial number"
     register_type: read
     address: 464513
-    register_count: 2
-    response_size: 8
+    response_size: 4
     raw_encode: HEXBYTES
     entity_category: DIAGNOSTIC
     skip_updates: 720

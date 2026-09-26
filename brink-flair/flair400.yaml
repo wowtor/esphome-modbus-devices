@@ -190,8 +190,7 @@ text_sensor:
     id: "${controller_id}_software_version"
     register_type: read
     address: 4000
-    register_count: 3
-    response_size: 24
+    response_size: 6
     raw_encode: HEXBYTES
     entity_category: DIAGNOSTIC
     skip_updates: 720
@@ -210,8 +209,7 @@ text_sensor:
     name: "${prefix} hardware version"
     register_type: read
     address: 4003
-    register_count: 1
-    response_size: 8
+    response_size: 2
     raw_encode: HEXBYTES
     entity_category: DIAGNOSTIC
     skip_updates: 720
@@ -229,8 +227,7 @@ text_sensor:
   #  name: "${prefix} serial number"
   #  register_type: read
   #  address: 4013
-  #  register_count: 6
-  #  response_size: 48
+  #  response_size: 12
   #  raw_encode: ANSI
   #  entity_category: DIAGNOSTIC
   #  skip_updates: 720
