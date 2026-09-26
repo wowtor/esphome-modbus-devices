@@ -370,11 +370,11 @@ select:
       esphome::modbus_controller::ModbusNumber *number = id(${controller_id}_function);
       int state = (int)number->state;
       if (state & (1 << 10))
-        return to_string("climate curve eco");
+        return "climate curve eco";
       else if (state & (1 << 12))
-        return to_string("climate curve");
+        return "climate curve";
       else
-        return to_string("preset");
+        return "preset";
     set_action:
       - lambda: |-
           auto number = id(${controller_id}_function);
@@ -403,11 +403,11 @@ select:
       int state = (int)number->state;
       if (state & (1 << 6)) {
         if (state & (1 << 7))
-          return to_string("more silent");
+          return "more silent";
         else
-          return to_string("silent");
+          return "silent";
       } else {
-        return to_string("normal");
+        return "normal";
       }
     set_action:
       - lambda: |-
