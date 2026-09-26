@@ -534,7 +534,7 @@ switch:
   #	(water flow temperature control)
   - platform: modbus_controller
     modbus_controller_id: ${controller_id}
-    name: "${prefix} on/off"
+    name: "${prefix} on_off"
     id: "${controller_id}_enable"
     icon: "mdi:power-standby"
     register_type: holding
