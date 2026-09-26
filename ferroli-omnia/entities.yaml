@@ -632,10 +632,10 @@ number:
     skip_updates: 30
     write_lambda: |-
       float min_value, max_value;
-      if (id(${controller_id}_hvac_mode).state == "cool") {
+      if (id(${controller_id}_hvac_mode).current_option() == "cool") {
         min_value = id(${controller_id}_min_cool_setpoint).state;
         max_value = id(${controller_id}_max_cool_setpoint).state;
-      } else if (id(${controller_id}_hvac_mode).state == "heat") {
+      } else if (id(${controller_id}_hvac_mode).current_option() == "heat") {
         min_value = id(${controller_id}_min_heat_setpoint).state;
         max_value = id(${controller_id}_max_heat_setpoint).state;
       } else {

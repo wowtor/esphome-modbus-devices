@@ -196,11 +196,11 @@ text_sensor:
     skip_updates: 720
     icon: "mdi:qrcode"
     lambda: |-
-      char device_type = modbus_controller::byte_from_hex_str(x, 0);
-      uint8_t major = modbus_controller::byte_from_hex_str(x, 1);
-      uint8_t minor = modbus_controller::byte_from_hex_str(x, 2);
-      uint8_t fix = modbus_controller::byte_from_hex_str(x, 3);
-      uint16_t build = modbus_controller::word_from_hex_str(x, 4);
+      char device_type = modbus::helpers::byte_from_hex_str(x, 0);
+      uint8_t major = modbus::helpers::byte_from_hex_str(x, 1);
+      uint8_t minor = modbus::helpers::byte_from_hex_str(x, 2);
+      uint8_t fix = modbus::helpers::byte_from_hex_str(x, 3);
+      uint16_t build = modbus::helpers::word_from_hex_str(x, 4);
       return str_sprintf("%c%d.%d.%d.%d", device_type, major, minor, fix, build);
     disabled_by_default: true
 
@@ -215,8 +215,8 @@ text_sensor:
     skip_updates: 720
     icon: "mdi:qrcode"
     lambda: |-
-      uint8_t major = modbus_controller::byte_from_hex_str(x, 0);
-      uint8_t minor = modbus_controller::byte_from_hex_str(x, 1);
+      uint8_t major = modbus::helpers::byte_from_hex_str(x, 0);
+      uint8_t minor = modbus::helpers::byte_from_hex_str(x, 1);
       return str_sprintf("H%d.%d", major, minor);
     disabled_by_default: true
 
@@ -323,7 +323,7 @@ switch:
     # 0: Standby not active
     # 1: Standby active
     write_lambda: |-
-      ESP_LOGD("main","Writing power mode: %f", x);
+      ESP_LOGD("main","Writing power mode: %d", x);
       return {};  // do not do anything (should return appropriate payload)
 
   - platform: modbus_controller
